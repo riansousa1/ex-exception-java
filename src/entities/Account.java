@@ -6,8 +6,11 @@ public class Account {
 	private Double balance;
 	private Double withDrawLimit;
 	
+	public Account() {
+		
+	}
+	
 	public Account(Integer number, String holder, Double balance, Double withDrawLimit) {
-		super();
 		this.number = number;
 		this.holder = holder;
 		this.balance = balance;
@@ -52,5 +55,9 @@ public class Account {
 	
 	public void withDraw(double amount) {
 		balance -= amount;
+	}
+	
+	public String toString() {
+		return "New balance: " + String.format("%.2f", balance);
 	}
 }
