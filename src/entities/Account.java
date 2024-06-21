@@ -1,5 +1,7 @@
 package entities;
 
+import model.exceptions.DomainExpections;
+
 public class Account {
 	private Integer number;
 	private String holder;
@@ -54,7 +56,14 @@ public class Account {
 	}
 	
 	public void withDraw(double amount) {
-		balance -= amount;
+		if (amount > withDrawLimit) {
+			throw new DomainExpections("The amount exceeds withdraw limit");
+		} else if (amount > balance) {
+			throw new DomainExpections("Not enough balance");
+		} else {
+			balance -= amount;
+		}
+				
 	}
 	
 	public String toString() {
